@@ -1,0 +1,413 @@
+<div id="krieger-konfigurator">
+  <style>
+    #krieger-konfigurator {
+      --krieger-forest: light-dark(#274936, #8fb59a);
+      --krieger-forest-deep: light-dark(#183426, #d1e7d7);
+      --krieger-cream: light-dark(#f5f0e4, #171c18);
+      --krieger-paper: light-dark(#fffdf8, #222824);
+      --krieger-ink: light-dark(#20241f, #f2f4ef);
+      --krieger-muted: light-dark(#687068, #aeb8b0);
+      --krieger-line: light-dark(#d9d7cd, #485149);
+      --krieger-gold: #c78a34;
+      color: var(--krieger-ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #krieger-konfigurator * { box-sizing: border-box; }
+    #krieger-konfigurator .kr-shell {
+      overflow: hidden;
+      border: 1px solid var(--krieger-line);
+      border-radius: 18px;
+      background: var(--krieger-paper);
+      box-shadow: 0 20px 55px color-mix(in srgb, var(--krieger-forest-deep) 12%, transparent);
+    }
+    #krieger-konfigurator .kr-topbar {
+      min-height: 76px;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--krieger-line);
+    }
+    #krieger-konfigurator .kr-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--krieger-forest-deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+    #krieger-konfigurator .kr-mark {
+      width: 39px;
+      height: 39px;
+      display: block;
+      object-fit: contain;
+    }
+    #krieger-konfigurator .kr-brand small {
+      display: block;
+      margin-top: 2px;
+      color: var(--krieger-muted);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    #krieger-konfigurator .kr-nav { display: flex; gap: 23px; align-items: center; font-size: 13px; }
+    #krieger-konfigurator .kr-nav span:first-child { color: var(--krieger-forest); font-weight: 750; }
+    #krieger-konfigurator .kr-phone {
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--krieger-forest);
+      color: var(--krieger-paper);
+      font-weight: 750;
+    }
+    #krieger-konfigurator .kr-intro {
+      padding: 27px 30px 24px;
+      background: var(--krieger-cream);
+      border-bottom: 1px solid var(--krieger-line);
+    }
+    #krieger-konfigurator .kr-kicker {
+      margin: 0 0 7px;
+      color: var(--krieger-gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    #krieger-konfigurator h1 {
+      margin: 0;
+      color: var(--krieger-forest-deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(27px, 4vw, 42px);
+      font-weight: 700;
+      letter-spacing: -.025em;
+      line-height: 1.08;
+    }
+    #krieger-konfigurator .kr-intro p:last-child {
+      max-width: 650px;
+      margin: 9px 0 0;
+      color: var(--krieger-muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    #krieger-konfigurator .kr-layout { display: grid; grid-template-columns: minmax(285px, 35%) 1fr; min-height: 570px; }
+    #krieger-konfigurator .kr-controls { padding: 27px 27px 30px; border-right: 1px solid var(--krieger-line); }
+    #krieger-konfigurator .kr-step {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      color: var(--krieger-forest-deep);
+      font-weight: 800;
+      font-size: 14px;
+    }
+    #krieger-konfigurator .kr-step b {
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--krieger-forest);
+      color: var(--krieger-paper);
+      font-size: 12px;
+    }
+    #krieger-konfigurator .kr-field { margin-bottom: 19px; }
+    #krieger-konfigurator label,
+    #krieger-konfigurator .kr-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 7px;
+      color: var(--krieger-ink);
+      font-size: 12px;
+      font-weight: 750;
+    }
+    #krieger-konfigurator label output { color: var(--krieger-forest); }
+    #krieger-konfigurator select {
+      width: 100%;
+      height: 42px;
+      padding: 0 12px;
+      border: 1px solid var(--krieger-line);
+      border-radius: 9px;
+      background: var(--krieger-paper);
+      color: var(--krieger-ink);
+      font: inherit;
+      font-size: 13px;
+    }
+    #krieger-konfigurator input[type="range"] { width: 100%; accent-color: var(--krieger-forest); }
+    #krieger-konfigurator .kr-hint { margin: 5px 0 0; color: var(--krieger-muted); font-size: 10px; line-height: 1.4; }
+    #krieger-konfigurator .kr-next {
+      width: 100%;
+      min-height: 45px;
+      margin-top: 8px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--krieger-forest);
+      color: var(--krieger-paper);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    #krieger-konfigurator .kr-next:focus-visible,
+    #krieger-konfigurator select:focus-visible,
+    #krieger-konfigurator input:focus-visible { outline: 3px solid color-mix(in srgb, var(--krieger-gold) 45%, transparent); outline-offset: 2px; }
+    #krieger-konfigurator .kr-stage { display: grid; grid-template-rows: 1fr auto; min-width: 0; background: var(--krieger-paper); }
+    #krieger-konfigurator .kr-preview {
+      position: relative;
+      min-height: 410px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 72% 22%, color-mix(in srgb, #f4cc70 70%, transparent) 0 7%, transparent 7.5%),
+        linear-gradient(180deg, #cfe4e8 0 49%, #a9c79c 49% 67%, #78965e 67% 100%);
+    }
+    #krieger-konfigurator .kr-hills,
+    #krieger-konfigurator .kr-hills::before,
+    #krieger-konfigurator .kr-hills::after {
+      position: absolute;
+      content: "";
+      left: -8%;
+      right: -8%;
+      bottom: 27%;
+      height: 36%;
+      border-radius: 48% 48% 0 0;
+      background: #6f8e62;
+      transform: rotate(-3deg);
+    }
+    #krieger-konfigurator .kr-hills::before { left: 28%; bottom: 4%; height: 90%; background: #87a878; transform: rotate(7deg); }
+    #krieger-konfigurator .kr-hills::after { left: -28%; right: 38%; bottom: -16%; height: 89%; background: #5e7f50; transform: rotate(8deg); }
+    #krieger-konfigurator .kr-place {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      padding: 7px 10px;
+      border-radius: 7px;
+      background: rgba(255,255,255,.78);
+      color: #274936;
+      backdrop-filter: blur(8px);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    #krieger-konfigurator .kr-fence {
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      bottom: 13%;
+      height: 48%;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      filter: drop-shadow(6px 10px 6px rgba(24, 40, 27, .24));
+    }
+    #krieger-konfigurator .kr-slat {
+      position: relative;
+      height: var(--slat-height, 76%);
+      width: var(--slat-width, 5%);
+      min-width: 5px;
+      max-width: 18px;
+      border-radius: 5px 5px 2px 2px;
+      background: var(--fence-color, #b88452);
+      border: 1px solid color-mix(in srgb, var(--fence-color, #b88452) 75%, #342113);
+    }
+    #krieger-konfigurator .kr-slat::before {
+      position: absolute;
+      content: "";
+      top: -10px;
+      left: -1px;
+      width: calc(100% + 2px);
+      height: 14px;
+      background: var(--fence-color, #b88452);
+      border: inherit;
+      clip-path: polygon(50% 0, 100% 72%, 100% 100%, 0 100%, 0 72%);
+    }
+    #krieger-konfigurator .kr-rail {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 14px;
+      border-radius: 4px;
+      background: var(--fence-color, #b88452);
+      border: 1px solid color-mix(in srgb, var(--fence-color, #b88452) 75%, #342113);
+    }
+    #krieger-konfigurator .kr-rail.one { bottom: 27%; }
+    #krieger-konfigurator .kr-rail.two { bottom: 64%; }
+    #krieger-konfigurator .kr-post {
+      position: absolute;
+      bottom: -7px;
+      z-index: 2;
+      width: 22px;
+      height: 99%;
+      border-radius: 5px 5px 2px 2px;
+      background: color-mix(in srgb, var(--fence-color, #b88452) 82%, #4b3320);
+      border: 1px solid rgba(52,33,19,.7);
+    }
+    #krieger-konfigurator .kr-post.left { left: -5px; }
+    #krieger-konfigurator .kr-post.right { right: -5px; }
+    #krieger-konfigurator .kr-ranch .kr-slat { display: none; }
+    #krieger-konfigurator .kr-ranch .kr-rail { height: 20px; }
+    #krieger-konfigurator .kr-ranch .kr-rail.one { bottom: 30%; }
+    #krieger-konfigurator .kr-ranch .kr-rail.two { bottom: 67%; }
+    #krieger-konfigurator .kr-jager .kr-slat:nth-of-type(odd) { transform: rotate(22deg); transform-origin: bottom; }
+    #krieger-konfigurator .kr-jager .kr-slat:nth-of-type(even) { transform: rotate(-22deg); transform-origin: bottom; }
+    #krieger-konfigurator .kr-jager .kr-rail { opacity: 0; }
+    #krieger-konfigurator .kr-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      border-top: 1px solid var(--krieger-line);
+      background: var(--krieger-line);
+    }
+    #krieger-konfigurator .kr-summary div { min-width: 0; padding: 16px 15px; background: var(--krieger-paper); }
+    #krieger-konfigurator .kr-summary small { display: block; color: var(--krieger-muted); font-size: 9px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+    #krieger-konfigurator .kr-summary strong { display: block; overflow: hidden; margin-top: 4px; color: var(--krieger-forest-deep); font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+    @media (max-width: 760px) {
+      #krieger-konfigurator .kr-nav span { display: none; }
+      #krieger-konfigurator .kr-phone { display: block; }
+      #krieger-konfigurator .kr-layout { grid-template-columns: 1fr; }
+      #krieger-konfigurator .kr-controls { border-right: 0; border-bottom: 1px solid var(--krieger-line); }
+      #krieger-konfigurator .kr-preview { min-height: 330px; }
+    }
+    @media (max-width: 470px) {
+      #krieger-konfigurator .kr-topbar { padding: 12px 15px; }
+      #krieger-konfigurator .kr-phone { padding: 9px; font-size: 0; }
+      #krieger-konfigurator .kr-phone::after { content: "Anrufen"; font-size: 11px; }
+      #krieger-konfigurator .kr-intro { padding: 22px 19px; }
+      #krieger-konfigurator .kr-controls { padding: 23px 19px; }
+      #krieger-konfigurator .kr-summary { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+
+  <section class="kr-shell" aria-label="Konzeptvorschau für den Zaunkonfigurator des Giglberger Hofs">
+    <header class="kr-topbar">
+      <div class="kr-brand"><img class="kr-mark" src="assets/concept/logo-richtung-v1.png" alt=""><span>Giglberger Hof<small>Familie Krieger · Edling</small></span></div>
+      <nav class="kr-nav" aria-label="Hauptnavigation"><span>Zäune</span><span>Holz &amp; Hof</span><span>Christbäume</span><span>Über uns</span><strong class="kr-phone">08076 361</strong></nav>
+    </header>
+
+    <div class="kr-intro">
+      <p class="kr-kicker">Vom Hof. Für Ihr Zuhause.</p>
+      <h1>So könnte Ihr neuer Zaun aussehen.</h1>
+      <p>Wählen Sie Form, Holz und Maße. Wir prüfen Ihre Zusammenstellung persönlich und melden uns mit einem passenden Angebot.</p>
+    </div>
+
+    <div class="kr-layout">
+      <form class="kr-controls" onsubmit="return false">
+        <div class="kr-step"><b>1</b> Zaun zusammenstellen</div>
+
+        <div class="kr-field">
+          <label for="kr-type">Zaunart</label>
+          <select id="kr-type">
+            <option value="senkrecht">Senkrechtzaun</option>
+            <option value="stakete">Staketenzaun</option>
+            <option value="jager">Jägerzaun</option>
+            <option value="ranch">Ranchzaun</option>
+          </select>
+        </div>
+
+        <div class="kr-field">
+          <label for="kr-material">Material</label>
+          <select id="kr-material">
+            <option value="laerche">Lärche natur</option>
+            <option value="fichte">Fichte kesseldruckimprägniert</option>
+            <option value="robinie">Robinie naturgewachsen</option>
+            <option value="metall">Metall, Anthrazit</option>
+          </select>
+        </div>
+
+        <div class="kr-field">
+          <label for="kr-length">Gesamtlänge <output id="kr-length-out">12,0 m</output></label>
+          <input id="kr-length" type="range" min="2" max="40" step="0.5" value="12">
+        </div>
+
+        <div class="kr-field">
+          <label for="kr-height">Zaunhöhe <output id="kr-height-out">100 cm</output></label>
+          <input id="kr-height" type="range" min="60" max="200" step="10" value="100">
+        </div>
+
+        <div class="kr-field">
+          <label for="kr-spacing">Segmentbreite <output id="kr-spacing-out">2,0 m</output></label>
+          <input id="kr-spacing" type="range" min="1" max="3" step="0.1" value="2">
+          <p class="kr-hint">Die tatsächliche Pfostenverteilung prüfen wir passend zum Gelände.</p>
+        </div>
+
+        <div class="kr-field" id="kr-slats-field">
+          <label for="kr-slats">Latten je Segment <output id="kr-slats-out">10</output></label>
+          <input id="kr-slats" type="range" min="4" max="18" step="1" value="10">
+        </div>
+
+        <button class="kr-next" type="button" id="kr-request">Weiter zu Grundstück &amp; Anfrage →</button>
+      </form>
+
+      <div class="kr-stage">
+        <div class="kr-preview">
+          <span class="kr-place">Giglberg · Oberbayern</span>
+          <div class="kr-hills"></div>
+          <div class="kr-fence" id="kr-fence" aria-label="Visuelle Vorschau des gewählten Zauns">
+            <span class="kr-rail one"></span><span class="kr-rail two"></span>
+            <span class="kr-post left"></span><span class="kr-post right"></span>
+          </div>
+        </div>
+        <div class="kr-summary" aria-live="polite">
+          <div><small>Zaunart</small><strong id="kr-sum-type">Senkrechtzaun</strong></div>
+          <div><small>Material</small><strong id="kr-sum-material">Lärche natur</strong></div>
+          <div><small>Segmente</small><strong id="kr-sum-segments">6 Stück</strong></div>
+          <div><small>Pfosten / Latten</small><strong id="kr-sum-parts">7 / 60</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const root = document.getElementById('krieger-konfigurator');
+      const type = root.querySelector('#kr-type');
+      const material = root.querySelector('#kr-material');
+      const length = root.querySelector('#kr-length');
+      const height = root.querySelector('#kr-height');
+      const spacing = root.querySelector('#kr-spacing');
+      const slats = root.querySelector('#kr-slats');
+      const fence = root.querySelector('#kr-fence');
+      const slatsField = root.querySelector('#kr-slats-field');
+
+      const colors = { laerche: '#b98450', fichte: '#7f9a63', robinie: '#9b754d', metall: '#3e4543' };
+      const typeNames = { senkrecht: 'Senkrechtzaun', stakete: 'Staketenzaun', jager: 'Jägerzaun', ranch: 'Ranchzaun' };
+      const materialNames = { laerche: 'Lärche natur', fichte: 'Fichte imprägniert', robinie: 'Robinie natur', metall: 'Metall anthrazit' };
+      const formatDecimal = value => Number(value).toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+      function update() {
+        const segmentCount = Math.ceil(Number(length.value) / Number(spacing.value));
+        const slatCount = type.value === 'ranch' ? 0 : segmentCount * Number(slats.value);
+        const previewSlats = type.value === 'ranch' ? 0 : Math.min(24, Math.max(6, Number(slats.value) + 4));
+
+        fence.querySelectorAll('.kr-slat').forEach(node => node.remove());
+        for (let index = 0; index < previewSlats; index += 1) {
+          const node = document.createElement('span');
+          node.className = 'kr-slat';
+          if (type.value === 'stakete') node.style.setProperty('--slat-height', `${69 + (index % 4) * 5}%`);
+          fence.insertBefore(node, fence.firstChild);
+        }
+
+        fence.className = `kr-fence kr-${type.value}`;
+        fence.style.setProperty('--fence-color', colors[material.value]);
+        fence.style.height = `${32 + ((Number(height.value) - 60) / 140) * 42}%`;
+        slatsField.style.display = type.value === 'ranch' ? 'none' : 'block';
+
+        root.querySelector('#kr-length-out').textContent = `${formatDecimal(length.value)} m`;
+        root.querySelector('#kr-height-out').textContent = `${height.value} cm`;
+        root.querySelector('#kr-spacing-out').textContent = `${formatDecimal(spacing.value)} m`;
+        root.querySelector('#kr-slats-out').textContent = slats.value;
+        root.querySelector('#kr-sum-type').textContent = typeNames[type.value];
+        root.querySelector('#kr-sum-material').textContent = materialNames[material.value];
+        root.querySelector('#kr-sum-segments').textContent = `${segmentCount} Stück`;
+        root.querySelector('#kr-sum-parts').textContent = type.value === 'ranch' ? `${segmentCount + 1} / 2 Riegel je Feld` : `${segmentCount + 1} / ${slatCount}`;
+      }
+
+      [type, material, length, height, spacing, slats].forEach(control => control.addEventListener('input', update));
+      update();
+    })();
+  </script>
+</div>

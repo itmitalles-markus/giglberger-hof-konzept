@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Konzeptwebsite für den Giglberger Hof in Edling: Holzzäune, Zaunmontage und Christbäume.">
+  <title>Giglberger Hof – Zäune & Christbäume aus Edling</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="demo-bar">Unverbindliche Konzeptversion – Bilder und Inhalte werden vor Veröffentlichung mit Familie Krieger abgestimmt.</div>
+  <header class="site-header">
+    <a class="brand" href="#start" aria-label="Giglberger Hof – Startseite">
+      <img src="assets/concept/logo-richtung-v1.png" alt="">
+      <span>Giglberger Hof<small>Familie Krieger · Edling</small></span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menü</button>
+    <nav id="main-nav" class="main-nav" aria-label="Hauptnavigation">
+      <a href="#zaeune">Zäune</a>
+      <a href="#konfigurator">Konfigurator</a>
+      <a href="#hof">Unser Hof</a>
+      <a href="#christbaeume">Christbäume</a>
+      <a class="nav-phone" href="tel:+498076361">08076 361</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="start" class="hero">
+      <img src="assets/concept/hero-hof-und-zaun-v1.png" alt="Konzeptansicht eines oberbayerischen Hofs mit neuem Holzzaun">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Vom Hof. Für Ihr Zuhause.</p>
+        <h1>Zäune mit Charakter.<br>Aus Edling.</h1>
+        <p>Holzprodukte, Zaunmontage und persönliche Beratung vom Giglberger Hof.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#konfigurator">Zaun konfigurieren</a>
+          <a class="button secondary" href="tel:+498076361">Direkt anrufen</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="zaeune" class="section intro-section">
+      <div>
+        <p class="eyebrow">Natürlich passend</p>
+        <h2>Ein Zaun, der zu Haus und Landschaft passt.</h2>
+      </div>
+      <p>Von klassischem Lattenzaun bis zum robusten Weidezaun: Wir beraten persönlich, wählen das passende Material und montieren auf Wunsch vor Ort.</p>
+    </section>
+
+    <section class="service-grid section" aria-label="Leistungsübersicht">
+      <article><span>01</span><h3>Holzzäune</h3><p>Natürlich, langlebig und passend zu Gebäude und Grundstück geplant.</p></article>
+      <article><span>02</span><h3>Pfosten & Palisaden</h3><p>Material für Eigenbau, Garten, Landwirtschaft und individuelle Lösungen.</p></article>
+      <article><span>03</span><h3>Montage</h3><p>Saubere Umsetzung vom Einmessen bis zum fertigen Zaunverlauf.</p></article>
+    </section>
+
+    <section id="konfigurator" class="config-section">
+      <div class="config-heading section">
+        <p class="eyebrow">Erster Entwurf in wenigen Minuten</p>
+        <h2>Stellen Sie Ihren Zaun zusammen.</h2>
+        <p>Die Vorschau ist eine Orientierung. Maße, Gelände und Ausführung prüfen wir anschließend persönlich.</p>
+      </div>
+
+      <div class="config-shell section">
+        <form class="config-controls" id="fence-form">
+          <div class="step-title"><b>1</b><span>Zaun auswählen</span></div>
+
+          <label>Zaunart
+            <select id="fence-type">
+              <option value="senkrecht">Senkrechtzaun</option>
+              <option value="stakete">Staketenzaun</option>
+              <option value="jager">Jägerzaun</option>
+              <option value="ranch">Ranch- / Weidezaun</option>
+            </select>
+          </label>
+
+          <label>Material
+            <select id="fence-material">
+              <option value="laerche">Lärche natur</option>
+              <option value="fichte">Fichte, imprägniert</option>
+              <option value="robinie">Robinie naturgewachsen</option>
+              <option value="metall">Metall, Anthrazit</option>
+            </select>
+          </label>
+
+          <label class="range-label"><span>Gesamtlänge <output id="length-output">12,0 m</output></span>
+            <input id="fence-length" type="range" min="2" max="40" step="0.5" value="12">
+          </label>
+
+          <label class="range-label"><span>Zaunhöhe <output id="height-output">100 cm</output></span>
+            <input id="fence-height" type="range" min="60" max="200" step="10" value="100">
+          </label>
+
+          <label class="range-label"><span>Segmentbreite <output id="spacing-output">2,0 m</output></span>
+            <input id="fence-spacing" type="range" min="1" max="3" step="0.1" value="2">
+          </label>
+
+          <label class="range-label" id="slats-control"><span>Latten je Segment <output id="slats-output">10</output></span>
+            <input id="fence-slats" type="range" min="4" max="18" step="1" value="10">
+          </label>
+
+          <label>Tor
+            <select id="fence-gate">
+              <option value="Kein Tor">Kein Tor</option>
+              <option value="Gartentor, ca. 1 m">Gartentor, ca. 1 m</option>
+              <option value="Doppeltor, ca. 3 m">Doppeltor, ca. 3 m</option>
+            </select>
+          </label>
+
+          <label>Ausführung
+            <select id="fence-service">
+              <option value="Komplettmontage">Komplettmontage</option>
+              <option value="Materiallieferung">Materiallieferung</option>
+              <option value="Material zur Abholung">Material zur Abholung</option>
+            </select>
+          </label>
+        </form>
+
+        <div class="config-preview">
+          <div class="landscape">
+            <span class="location-chip">Giglberg · Oberbayern</span>
+            <div class="sun"></div>
+            <div class="hill hill-one"></div>
+            <div class="hill hill-two"></div>
+            <div class="fence" id="fence-preview" aria-label="Visuelle Vorschau des ausgewählten Zauns">
+              <span class="rail rail-one"></span>
+              <span class="rail rail-two"></span>
+              <span class="post post-left"></span>
+              <span class="post post-right"></span>
+            </div>
+          </div>
+          <dl class="config-summary" aria-live="polite">
+            <div><dt>Zaun</dt><dd id="summary-type">Senkrechtzaun</dd></div>
+            <div><dt>Material</dt><dd id="summary-material">Lärche natur</dd></div>
+            <div><dt>Segmente</dt><dd id="summary-segments">6 Stück</dd></div>
+            <div><dt>Pfosten / Latten</dt><dd id="summary-parts">7 / 60</dd></div>
+          </dl>
+          <div class="config-action">
+            <p>Passt die Richtung? Dann bereiten wir daraus Ihre unverbindliche Anfrage vor.</p>
+            <button class="button primary" id="prepare-request" type="button">Anfrage vorbereiten</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="request-result section" id="request-result" hidden>
+        <div>
+          <p class="eyebrow">Ihre Zusammenstellung</p>
+          <h3>Bereit für das persönliche Gespräch.</h3>
+          <pre id="request-text"></pre>
+        </div>
+        <div class="result-actions">
+          <button class="button primary" id="copy-request" type="button">Angaben kopieren</button>
+          <a class="button outline" href="tel:+498076361">08076 361 anrufen</a>
+          <small>Demo: Es werden noch keine Daten übertragen.</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="hof" class="split-section section">
+      <img src="assets/concept/beratung-am-hof-v1.png" alt="Konzeptfoto einer persönlichen Zaunberatung in einer Hofwerkstatt">
+      <div>
+        <p class="eyebrow">Persönlich statt anonym</p>
+        <h2>Direkt mit den Menschen sprechen, die es umsetzen.</h2>
+        <p>Beim Giglberger Hof kommen Material, Erfahrung und Beratung zusammen. Statt eines anonymen Warenkorbs gibt es eine Lösung, die zum Grundstück passt.</p>
+        <a class="text-link" href="tel:+498076361">Mit Familie Krieger sprechen →</a>
+      </div>
+    </section>
+
+    <section class="craft-section section">
+      <div>
+        <p class="eyebrow">Ehrliches Handwerk</p>
+        <h2>Vom ersten Maß bis zur letzten Latte.</h2>
+        <p>Der Konfigurator schafft eine gemeinsame Grundlage. Die fachliche Prüfung und die saubere Ausführung bleiben persönlich.</p>
+      </div>
+      <img src="assets/concept/zaunmontage-detail-v1.png" alt="Konzeptfoto: Eine Zaunlatte wird beim Montieren ausgerichtet">
+    </section>
+
+    <section id="christbaeume" class="christmas-section">
+      <img src="assets/concept/christbaumverkauf-v1.png" alt="Konzeptfoto eines Christbaumverkaufs im Hof">
+      <div class="christmas-overlay"></div>
+      <div class="christmas-content">
+        <p class="eyebrow">Wenn es wieder nach Tanne duftet</p>
+        <h2>Christbäume vom Giglberger Hof.</h2>
+        <p>Nordmanntannen, Fichten, Dekozweige sowie Advents- und Türkränze – saisonal direkt am Hof.</p>
+        <span>Verkaufszeiten für die kommende Saison folgen.</span>
+      </div>
+    </section>
+
+    <section id="kontakt" class="contact-section section">
+      <div>
+        <p class="eyebrow">Einfach erreichbar</p>
+        <h2>Erzählen Sie uns von Ihrem Projekt.</h2>
+      </div>
+      <address>
+        <strong>Familie Krieger · Giglberger Hof</strong>
+        <span>Giglberg 1 · 83533 Edling · an der B304</span>
+        <a href="tel:+498076361">Telefon 08076 361</a>
+      </address>
+    </section>
+  </main>
+
+  <footer>
+    <span>© Giglberger Hof · Konzeptversion</span>
+    <span>Impressum · Datenschutz</span>
+  </footer>
+</body>
+</html>
