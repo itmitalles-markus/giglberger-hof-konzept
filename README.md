@@ -2,6 +2,10 @@
 
 Kostenlose statische Testversion für den Giglberger Hof / Familie Krieger in Edling.
 
+## Testseite ansehen
+
+**[Zur veröffentlichten Website auf GitHub Pages](https://itmitalles-markus.github.io/giglberger-hof-konzept/)**
+
 ## Enthalten
 
 - responsive Startseite
