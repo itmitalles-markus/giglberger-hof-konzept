@@ -1,0 +1,18 @@
+# GitHub verwendet diese Kategorien bei "Generate release notes".
+# Direkte Commits zusätzlich aus CHANGELOG.md übernehmen.
+changelog:
+  categories:
+    - title: Inkompatible Änderungen
+      labels: [breaking-change]
+    - title: Sicherheit
+      labels: [security]
+    - title: Neue Funktionen
+      labels: [feature, enhancement]
+    - title: Fehlerbehebungen
+      labels: [bug, fix]
+    - title: Dokumentation
+      labels: [docs, documentation]
+    - title: Technik und Wartung
+      labels: [chore, maintenance, dependencies]
+    - title: Weitere Änderungen
+      labels: ['*']
