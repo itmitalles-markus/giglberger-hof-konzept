@@ -1,5 +1,7 @@
 # Giglberger Hof – Konzeptwebsite
 
+**Versionshistorie:** [Was wurde geändert?](CHANGELOG.md) · [Releases und Downloads](https://github.com/itmitalles-markus/giglberger-hof-konzept/releases) · [Pflege der Historie](VERSIONING.md)
+
 Kostenlose statische Testversion für den Giglberger Hof / Familie Krieger in Edling.
 
 ## Testseite ansehen
